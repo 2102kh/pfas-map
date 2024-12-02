@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { RiMenu2Line } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
-import '../styles/_navBar.scss';
+import "../styles/_navBar.scss";
 
 export const NavBar = () => {
   const [isResponsive, setIsResponsive] = useState(false);

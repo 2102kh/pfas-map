@@ -6,7 +6,6 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <h1>Sweden PFAS information map</h1>
     </>
   );
 }
