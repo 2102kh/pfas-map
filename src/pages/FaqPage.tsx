@@ -1,8 +1,9 @@
+import { Auth } from "../components/Auth"
 
 
 export const FaqPage = () => {
   return (
-    <div>AdminPanel</div>
+    <><Auth /></>
   )
 }
 
