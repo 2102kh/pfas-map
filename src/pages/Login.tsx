@@ -1,5 +1,7 @@
+import { Auth } from "../components/Auth"
+
 export const Login = () => {
     return (
-        <h3>Log in</h3>
+        <Auth />
     )
 }

@@ -2,9 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./pages/Layout";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
-import { CreateAccount } from "./pages/CreateAccount";
 import { FaqPage } from "./pages/FaqPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { CreateAccountPage } from "./pages/CreateAccountPage";
+import { AdminPanel } from "./pages/AdminPanel";
 
 export const router = createBrowserRouter([
   {
@@ -22,11 +23,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "create-account",
-        element: <CreateAccount />,
+        element: <CreateAccountPage />,
       },
       {
         path: "faq",
         element: <FaqPage />,
+      },
+      {
+        path: "dashboard",
+        element: <AdminPanel />,
       },
     ],
   },

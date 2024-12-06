@@ -23,6 +23,19 @@ header {
     font-size: 1.2rem;
     list-style: none;
     text-transform: uppercase;
+    .login-btn {
+      background-color: var(--textColor);
+      color: var(--mainColor);
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: var(--textHoverColor);
+        color: var(--textColor);
+      }
+    }
   }
   nav a {
     margin: 0 2rem;

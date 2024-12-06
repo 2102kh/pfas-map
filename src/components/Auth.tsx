@@ -1,52 +1,37 @@
 import "../styles/_auth.scss";
-import { auth, googleProvider } from "../config/firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState, } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
+
 export const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    return <div>Loading...</div>;
+  }
+  const { currentUser, signIn, signInWithGoogle, logOut } = authContext;
   const navigate = useNavigate();
 
-  const signIn = async () => {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      navigate("/home");
-      console.log("User created");
-    } catch (err) {
-      console.error(err);
-      console.log("Error creating user");
-    }
-  };
-  const signInWithGoogle = async () => {
-    try {
-      await signInWithPopup(auth, googleProvider);
-      console.log("User created");
-    } catch (err) {
-      console.error(err);
-      console.log("Error creating user");
-    }
+  const handleSignIn = async () => {
+    await signIn(email, password);
+    navigate("/dashboard");
   };
 
-  const logOut = async () => {
-    try {
-      await signOut(auth);
-      console.log("User signed out");
-    } catch (err) {
-      console.error(err);
-      console.log("Error creating user");
-    }
+  const handleSignInWithGoogle = async () => {
+    await signInWithGoogle();
+    navigate("/dashboard");
   };
-
   return (
     <>
-      <form className="form-container" onSubmit={(e) => e.preventDefault()}>
+      <form
+        className="form-container"
+        onSubmit={(e) => {
+          e.preventDefault()
+
+        }}>
         <div className="user-box">
-         
+
           <input
             placeholder="Your email address"
             onChange={(e) => setEmail(e.target.value)}
@@ -56,17 +41,25 @@ export const Auth = () => {
             onChange={(e) => setPassword(e.target.value)}
             type="password"
           />
-          <button type="button" onClick={signIn}>
-            Sign In
-          </button>
-          <button className='google' type="button" onClick={signInWithGoogle}
-           >
+          {currentUser ?
+            <button type="button" onClick={logOut}>
+              Logout
+            </button>
+            :
+            <button type="button" onClick={handleSignIn}>
+              Sign In
+            </button>
+          }
+
+          <button className='google' type="button" onClick={handleSignInWithGoogle}
+          >
             Sign In With Google
           </button>
-          <button type="button" onClick={logOut}>
-            Logout
-          </button>
+          <div>
+            <NavLink to="/create-account">Dont have an account? Create Account</NavLink>
+          </div>
         </div>
+
       </form>
     </>
   );

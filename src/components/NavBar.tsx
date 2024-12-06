@@ -1,20 +1,37 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { RiMenu2Line } from "react-icons/ri";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/_navBar.scss";
+import { AuthContext } from "../contexts/AuthContext";
 
 export const NavBar = () => {
   const [isResponsive, setIsResponsive] = useState(false);
+  const navigate = useNavigate();
 
   const toggleNavbar = () => {
-    console.log("Before:", isResponsive);
     setIsResponsive(!isResponsive);
-    console.log("After:", !isResponsive);
   };
   const closeNavbar = () => {
     setIsResponsive(false);
   };
+  const handleLogOut = async () => {
+    try {
+      await logOut(); 
+      navigate("/");
+      closeNavbar(); 
+    } catch (err) {
+      console.error("Failed to log out:", err);
+    }
+  };
+
+  const context = useContext(AuthContext);
+
+if (!context) {
+  throw new Error("AuthContext must be used within an AuthProvider");
+}
+
+const { currentUser, logOut } = context;
 
   return (
     <>
@@ -35,6 +52,19 @@ export const NavBar = () => {
               Contact
             </NavLink>
           </li>
+          {currentUser ? (
+    <li>
+      <button onClick={handleLogOut} className="login-btn">
+        Log out
+      </button>
+    </li>
+  ) : (
+    <li>
+      <NavLink to="/login" onClick={closeNavbar} className="login-btn">
+        Log in
+      </NavLink>
+    </li>
+  )}
         </ul>
         <button
           type="button"

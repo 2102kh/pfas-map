@@ -3,7 +3,8 @@ $form-background: #f9f9f9;
 $form-border-radius: 8px;
 $form-padding: 100px;
 $button-primary: #5b3e6e;
-$button-hover: darken($button-primary, 10%);
+
+
 
 .form-container {
   padding: $form-padding;
@@ -44,7 +45,7 @@ $button-hover: darken($button-primary, 10%);
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: $button-hover;
+        background-color: #a688ba;
       }
       &.google {
         background-color: #e79c1a;
