@@ -37,6 +37,7 @@ header {
       }
     }
   }
+  
   nav a {
     margin: 0 2rem;
     color: var(--textColor);
@@ -52,9 +53,11 @@ header {
 }
 @media only screen and (max-width: 768px) {
   header {
+   
     .nav-btn {
       display: block;
       cursor: pointer;
+      
     }
     .menu-list {
       flex-direction: column;
@@ -72,11 +75,12 @@ header {
       background-color: var(--mainColor);
       transition: transform 1.5s ease-in-out;
       transform: translateY(-100vh);
+      
 
       &.responsive_nav {
         transform: none;
+       
       }
-
       .nav-close-btn {
         position: absolute;
         top: 2rem;

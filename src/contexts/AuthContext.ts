@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import { User } from "firebase/auth";
-
+//import { User  as FirebaseUser} from "firebase/auth";
+import { User } from "../types/User";
 
 interface AuthContextType {
   currentUser: User | null;
@@ -8,6 +8,5 @@ interface AuthContextType {
   logOut: () => Promise<void>;
   signInWithGoogle: () => Promise<void>;
 }
-
 
 export const AuthContext = createContext<AuthContextType | null>(null);

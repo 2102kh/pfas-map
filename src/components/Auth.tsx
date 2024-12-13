@@ -7,28 +7,35 @@ export const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const authContext = useContext(AuthContext);
+
   if (!authContext) {
     return <div>Loading...</div>;
   }
+
   const { currentUser, signIn, signInWithGoogle, logOut } = authContext;
   const navigate = useNavigate();
 
   const handleSignIn = async () => {
-    await signIn(email, password);
-    navigate("/dashboard");
+    try {
+      console.log("Attempting to sign in with email:", email, "and password:", password);
+      await signIn(email, password);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error during handleSignIn:", error);
+    }
   };
 
   const handleSignInWithGoogle = async () => {
     await signInWithGoogle();
     navigate("/dashboard");
   };
+
   return (
     <>
       <form
         className="form-container"
         onSubmit={(e) => {
-          e.preventDefault()
-
+          e.preventDefault();
         }}>
         <div className="user-box">
 

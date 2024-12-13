@@ -1,25 +1,13 @@
-//import { PFASMap } from "../components/PFASMap"
-
-
-
-//  export const Home = () => {
-    
-//   return (
-//     <><h2>Wellcome to PFAS information map</h2>
-//     <PFASMap /></>
-//   )
-// }
-
 import { useEffect } from "react";
 import L from "leaflet"; 
 import "leaflet/dist/leaflet.css"; 
 
-export const Home = () => {
+export const PFASMap = () => {
   useEffect(() => {
     // Kolla om en karta redan finns i detta element och ta bort den
     const existingMap = L.DomUtil.get("map");
     if (existingMap) {
-      existingMap._leaflet_id = null; // Rensa tidigare instans
+      (existingMap as HTMLElement & { _leaflet_id?: string | null })._leaflet_id = null;
     }
 
     // Skapa en ny karta och centrera den över Sverige
