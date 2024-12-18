@@ -42,7 +42,7 @@ const registerAdmin = async (req, res) => {
       password,
     });
 
-    // Lägg till admin-information i Firestore
+    
     const db = admin.firestore();
     await db.collection("admins").doc(user.uid).set({
       email: email,

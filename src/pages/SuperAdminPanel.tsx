@@ -18,7 +18,7 @@ const SuperAdminPanel = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) {
