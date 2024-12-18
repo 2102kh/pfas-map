@@ -5,7 +5,7 @@ import { Login } from "./pages/Login";
 import { FaqPage } from "./pages/FaqPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { CreateAccountPage } from "./pages/CreateAccountPage";
-import { AdminPanel } from "./pages/AdminPanel";
+import SuperAdminPanel from "./pages/SuperAdminPanel";
 
 export const router = createBrowserRouter([
   {
@@ -29,9 +29,10 @@ export const router = createBrowserRouter([
         path: "faq",
         element: <FaqPage />,
       },
+      
       {
-        path: "dashboard",
-        element: <AdminPanel />,
+        path: "superadmin",
+        element: <SuperAdminPanel />,
       },
     ],
   },

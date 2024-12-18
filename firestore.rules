@@ -1,0 +1,22 @@
+
+rules_version = '2';
+
+  service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Regler för admins-samlingen
+    match /admins/{document} {
+      // Tillåt läsning för autentiserade användare vars dokument har rollen "pending"
+      allow read: if request.auth != null && resource.data.role == "pending";
+      // Tillåt skrivning om rollen är "pending" (för registrering)
+      allow write: if request.auth != null && resource.data.role == "pending";
+      // Superadmin (custom claim) får läsa och skriva i admins-samlingen
+      allow read, write: if request.auth != null && request.auth.token.role == "superadmin";
+    }
+
+    // Regler för data-samlingen
+    match /data/{document=**} {
+      allow read, write: if request.auth != null && request.auth.token.role == "admin";
+    }
+}
+}
