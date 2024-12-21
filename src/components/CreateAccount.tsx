@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import {createAdminAccount} from "../API/createAdminAccount.ts";
 
 
 
@@ -12,12 +12,8 @@ export const CreateAccount= () => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/register-admin", {
-        email,
-        password,
-        city,
-      });
-      setMessage(response.data.message);
+      const response = await createAdminAccount(email, password, city);
+      setMessage(response.message);
     } catch (error: any) {
       if (error.response) {
         setMessage(`Fel: ${error.response.data.error}`);
@@ -57,7 +53,7 @@ export const CreateAccount= () => {
       />
       <button onClick={handleRegister}>Registrera</button>
       <p>{message}</p>
-      
+
     </div>
   );
 };

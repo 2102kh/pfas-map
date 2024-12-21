@@ -6,6 +6,8 @@ import { FaqPage } from "./pages/FaqPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { CreateAccountPage } from "./pages/CreateAccountPage";
 import SuperAdminPanel from "./pages/SuperAdminPanel";
+import AdminLogin from "./pages/AdminLogin";
+import EditPfas from "./pages/EditPfas";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +35,14 @@ export const router = createBrowserRouter([
       {
         path: "superadmin",
         element: <SuperAdminPanel />,
+      },
+      {
+        path: "admin-login",
+        element: <AdminLogin />,
+      },
+      {
+        path: "dashboard",
+        element: <EditPfas/>,
       },
     ],
   },

@@ -1,159 +1,102 @@
+
 import { useState, useEffect, ReactNode } from "react";
-import { auth, googleProvider, db } from "../config/firebase";
+import { auth, db } from "../config/firebase";
 import { AuthContext } from "../contexts/AuthContext";
-import { getDoc, setDoc, doc } from "firebase/firestore";
-import { signInWithPopup, signInWithRedirect, signInWithEmailAndPassword, signOut, onAuthStateChanged, getRedirectResult } from "firebase/auth";
-import { User as FirebaseUser } from "firebase/auth"; // Import FirebaseUser type
-import { User } from "../types/User"; // Import User type from the correct file
-import { FirebaseError } from "firebase/app";
+import { getDoc, doc } from "firebase/firestore";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { User as FirebaseUser } from "firebase/auth";
+
+//import { User } from "../types/User";
+
+
+
 
 interface AuthProviderProps {
   children: ReactNode;
 }
-
-const getUserRole = async (user: FirebaseUser): Promise<string> => {
-  if (!user.email) {
-    throw new Error("User email is null");
-  }
-  const adminRef = doc(db, "admins", user.email);
-  const adminDoc = await getDoc(adminRef);
-
-  if (adminDoc.exists()) {
-    const data = adminDoc.data();
-    console.log("User role from Firestore:", data.role); // Log the role fetched from Firestore
-    return data.role || "user";
-  }
-  return "user";
+type ExtendedUser = {
+  id: string;
+  email: string;
+  role: string;
+  city?: string;
+  emailVerified: boolean;
+  isAnonymous: boolean;
+  providerData: FirebaseUser["providerData"];
 };
 
-const getAdminRegion = async (user: FirebaseUser): Promise<string> => {
-  const adminRef = doc(db, "admins", user.email || "");
-  const adminDoc = await getDoc(adminRef);
 
-  if (adminDoc.exists()) {
-    const data = adminDoc.data();
-    return data.region_id || "";
-  } else {
-    return "";
-  }
-};
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [currentUser, setCurrentUser] = useState<ExtendedUser | null>(null);
 
-  const createUserIfNotExists = async (user: User) => {
-    const adminRef = doc(db, "admins", user.email);
-    const adminDoc = await getDoc(adminRef);
+  const fetchUserData = async (user: FirebaseUser | null): Promise<ExtendedUser | null> => {
+    if (!user) return null;
 
-    if (!adminDoc.exists()) {
-      await setDoc(adminRef, {
-        email: user.email,
-        role: "user",
-        region_id: "stockholm"
-      });
-    } else {
-      const data = adminDoc.data();
-      if (data.role !== "admin") {
-        await setDoc(adminRef, { role: "admin" }, { merge: true });
+    try {
+      const idTokenResult = await user.getIdTokenResult(true);
+      const role = typeof idTokenResult.claims.role === "string" ? idTokenResult.claims.role : "user";
+      let city = "";
+
+      console.log("fetchUserData", user);
+
+      if (role !== "superadmin") {
+        console.log(1)
+        const adminDoc = await getDoc(doc(db, "admins", user.uid));
+        console.log(2)
+
+        if (adminDoc.exists()) {
+          console.log("admindata", adminDoc.data());
+          city = adminDoc.data().city || "";
+        }
       }
+
+      return {
+        id: user.uid,
+        email: user.email!,
+        role,
+        city,
+        emailVerified: user.emailVerified,
+        isAnonymous: user.isAnonymous,
+        providerData: user.providerData,
+      };
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      return null;
     }
   };
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        try {
-          console.log("Auth state changed: User signed in:", user.email);
-          const region = await getAdminRegion(user);
-          const role = await getUserRole(user);
-          const userData: User = { id: user.uid, email: user.email || "", role, region_id: region };
-          setCurrentUser(userData);
-          console.log("Auth state changed: Current user set:", userData);
-        } catch (error) {
-          console.error("Error fetching user role:", error);
-          setCurrentUser(null);
-        }
+        const userData = await fetchUserData(user);
+        setCurrentUser(userData);
+        console.log("Current user set:", userData);
       } else {
-        console.log("Auth state changed: User signed out");
         setCurrentUser(null);
+        console.log("No user signed in.");
       }
     });
-  
+
     return () => unsubscribe();
   }, []);
-  
-  const signIn = async (email: string, password: string) => {
-    try {
-      if (!email || !password) {
-        console.error("Email or password is empty");
-        return;
-      }
-      console.log("Attempting to sign in with email:", email);
-      const credentials = await signInWithEmailAndPassword(auth, email, password); 
-      const user = credentials.user;
-      console.log("User signed in:", user.email);
-      
-      const region = await getAdminRegion(user);  
-      const role = await getUserRole(user);  
-      const userData: User = { id: user.uid, email: user.email || "", role, region_id: region };
-      
-      setCurrentUser(userData);
-      console.log("Current user set:", userData);
-    } catch (err) {
-      console.error("Error during sign-in:", err);
-      if ((err as FirebaseError).code === 'auth/invalid-credential') {
-        console.error("Invalid credentials. Please check the email and password.");
-      }
-    }
-  };
-  
+
   const logOut = async () => {
     try {
       await signOut(auth);
       setCurrentUser(null);
       console.log("User signed out");
-    } catch (err) {
-      console.error("Error signing out:", err);
-    }
-  };
-
-  const signInWithGoogle = async () => {
-    try {
-      let result;
-      if (window.innerWidth > 768) {
-        result = await signInWithPopup(auth, googleProvider);
-      } else {
-        result = await signInWithRedirect(auth, googleProvider);
-      }
-
-      if (result && result.user) {
-        const user = result.user;
-        const region = await getAdminRegion(user);
-        const role = await getUserRole(user);
-        const userData: User = { id: user.uid, email: user.email || "", role, region_id: region };
-        setCurrentUser(userData);
-        await createUserIfNotExists(userData);
-      }
-
-      const redirectResult = await getRedirectResult(auth);
-
-      if (redirectResult && redirectResult.user) {
-        const user = redirectResult.user;
-        const region = await getAdminRegion(user);
-        const role = await getUserRole(user);
-        const userData: User = { id: user.uid, email: user.email || "", role, region_id: region };
-        setCurrentUser(userData);
-        await createUserIfNotExists(userData);
-      }
-    } catch (err) {
-      console.error("Error signing in with Google:", err);
-      alert("Error signing in. Please try again.");
+    } catch (error) {
+      console.error("Error signing out:", error);
     }
   };
 
   return (
-    <AuthContext.Provider value={{ currentUser, signIn, logOut, signInWithGoogle }}>
+    <AuthContext.Provider value={{ currentUser, logOut }}>
       {children}
     </AuthContext.Provider>
   );
 };
+
+
+

@@ -1,37 +1,25 @@
-//import { PFASMap } from "../components/PFASMap"
-
-
-
-//  export const Home = () => {
-    
-//   return (
-//     <><h2>Wellcome to PFAS information map</h2>
-//     <PFASMap /></>
-//   )
-// }
-
 import { useEffect } from "react";
-import L from "leaflet"; 
-import "leaflet/dist/leaflet.css"; 
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import { NavLink } from "react-router-dom";
 
 export const Home = () => {
   useEffect(() => {
-    // Kolla om en karta redan finns i detta element och ta bort den
+
     const existingMap = L.DomUtil.get("map");
     if (existingMap) {
-      existingMap._leaflet_id = null; // Rensa tidigare instans
+      (existingMap as any)._leaflet_id = null;
     }
 
-    // Skapa en ny karta och centrera den över Sverige
-    const map = L.map("map").setView([59.3293, 18.0686], 5); 
+    const map = L.map("map").setView([59.3293, 18.0686], 5);
 
-    
+
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    
+
     const locations = [
       { city: "Stockholm", lat: 59.3293, lng: 18.0686, info: "Stockholm: PFAS nivå 25" },
       { city: "Göteborg", lat: 57.7089, lng: 11.9746, info: "Göteborg: PFAS nivå 15" },
@@ -41,18 +29,28 @@ export const Home = () => {
     locations.forEach((location) => {
       L.marker([location.lat, location.lng])
         .addTo(map)
-        .bindPopup(location.info); 
+        .bindPopup(location.info);
     });
-  }, []); 
+  }, []);
 
   return (
-    <div
-      id="map" 
-      style={{ 
-        height: "600px",
-        width: "100%",
-        position: "relative",
-        zIndex: 1,}} 
-    ></div>
+
+    <>
+      <NavLink to="/admin-login" className="form-link">
+        Är du länsstyrelse-administratör? Logga in här
+      </NavLink>
+      <div
+        id="map"
+        style={{
+          height: "600px",
+          width: "100%",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+      </div>
+    </>
+
   );
 };
+

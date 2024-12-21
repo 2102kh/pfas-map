@@ -29,7 +29,7 @@ const SuperAdminPanel = () => {
       }
 
       try {
-        const idTokenResult = await user.getIdTokenResult();
+        const idTokenResult = await user.getIdTokenResult(true);
         const role = idTokenResult?.claims?.role;
 
         if (role !== "superadmin") {
@@ -98,8 +98,8 @@ const SuperAdminPanel = () => {
     }
   };
 
-  // Ta bort administratör
-  const handleDelete = async (id: string) => {
+  
+  const handleAdminDelete = async (id: string) => {
     try {
       await deleteDoc(doc(db, "admins", id));
       setPendingAdmins((prev) => prev.filter((admin) => admin.id !== id));
@@ -135,7 +135,7 @@ const SuperAdminPanel = () => {
                 </button>
                 <button
                   className="reject"
-                  onClick={() => handleDelete(admin.id)}
+                  onClick={() => handleAdminDelete(admin.id)}
                 >
                   Neka
                 </button>

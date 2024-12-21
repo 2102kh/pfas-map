@@ -4,6 +4,7 @@ import { auth } from "../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { NavLink, useNavigate } from "react-router-dom";
 
+
 export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -14,11 +15,11 @@ export const Login = () => {
         try {
 
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            navigate("/superadmin")
+
             const user = userCredential.user;
 
             // Hämta rollen från Custom Claims
-            const idTokenResult = await user.getIdTokenResult();
+            const idTokenResult = await user.getIdTokenResult(true);
             const role = idTokenResult.claims.role;
 
             console.log("Användarroll:", role);
@@ -61,11 +62,19 @@ export const Login = () => {
                     <NavLink to="/create-account" className="form-link">
                         Är du länsstyrelse-administratör? Skapa konto här
                     </NavLink>
+
+                    <NavLink to="/admin-login" className="form-link">
+                        ADMIN LOGIN
+                    </NavLink>
+
                 </div>
 
             </div>
 
         </div>
+
+
+
     );
 };
 
