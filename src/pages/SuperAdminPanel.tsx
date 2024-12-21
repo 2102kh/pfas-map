@@ -98,8 +98,8 @@ const SuperAdminPanel = () => {
     }
   };
 
-  
-  const handleAdminDelete = async (id: string) => {
+  // Ta bort administratör
+  const handleDelete = async (id: string) => {
     try {
       await deleteDoc(doc(db, "admins", id));
       setPendingAdmins((prev) => prev.filter((admin) => admin.id !== id));
@@ -135,7 +135,7 @@ const SuperAdminPanel = () => {
                 </button>
                 <button
                   className="reject"
-                  onClick={() => handleAdminDelete(admin.id)}
+                  onClick={() => handleDelete(admin.id)}
                 >
                   Neka
                 </button>

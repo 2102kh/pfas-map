@@ -1,7 +1,9 @@
 export interface ICityFromFirestore {
     lastUpdate: string;
     name: string;
-    pfasLevel: string;
+    pfasData: string;
+    lat: number;
+    lng: number;
 }
 
 
