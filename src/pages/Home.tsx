@@ -1,15 +1,31 @@
-import { useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { NavLink } from "react-router-dom";
+import { ICity } from "../types/City.ts";
+import { getAllCitiesInfo } from "../API/getAllCitiesInfo.ts";
 
 export const Home = () => {
+  const [citiesInfo, setCitiesInfo] = useState<ICity[]>([]);
+
+  useEffect(() => {
+    const fetchCitiesInfo = async () => {
+      const citiesInfo = await getAllCitiesInfo();
+      setCitiesInfo(citiesInfo);
+    };
+    fetchCitiesInfo();
+  }, []);
+
+  console.log(citiesInfo)
+
   useEffect(() => {
 
     const existingMap = L.DomUtil.get("map");
     if (existingMap) {
       (existingMap as any)._leaflet_id = null;
     }
+
 
     const map = L.map("map").setView([59.3293, 18.0686], 5);
 
@@ -20,24 +36,20 @@ export const Home = () => {
     }).addTo(map);
 
 
-    const locations = [
-      { city: "Stockholm", lat: 59.3293, lng: 18.0686, info: "Stockholm: PFAS nivå 25" },
-      { city: "Göteborg", lat: 57.7089, lng: 11.9746, info: "Göteborg: PFAS nivå 15" },
-      { city: "Malmö", lat: 55.605, lng: 13.0038, info: "Malmö: PFAS nivå 10" },
-    ];
+    const locations = citiesInfo.filter(city => city.lng && city.lat && city.pfasData).map((city) => ({ city: city.name, lat: city.lat, lng: city.lng, info: `${city.name}: PFAS nivå  ${city.pfasData}` }));
 
     locations.forEach((location) => {
       L.marker([location.lat, location.lng])
         .addTo(map)
         .bindPopup(location.info);
     });
-  }, []);
+  }, [citiesInfo]);
 
   return (
 
     <>
       <NavLink to="/admin-login" className="form-link">
-        Är du länsstyrelse-administratör? Logga in här
+        Är du länsstyrelse-administratör? logga in här
       </NavLink>
       <div
         id="map"
@@ -48,6 +60,8 @@ export const Home = () => {
           zIndex: 1,
         }}
       >
+
+
       </div>
     </>
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase.ts";
+import {signInWithEmailAndPassword} from "firebase/auth";
+import {auth} from "../config/firebase.ts";
 
 
 export const AdminLogin = () => {
@@ -20,26 +20,26 @@ export const AdminLogin = () => {
     setLoading(true);
     setError("");
 
-    try {
+      try {
 
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-      const user = userCredential.user;
+        const user = userCredential.user;
 
-      // Hämta rollen från Custom Claims
-      const idTokenResult = await user.getIdTokenResult(true);
-      const role = idTokenResult.claims.role;
+        // Hämta rollen från Custom Claims
+        const idTokenResult = await user.getIdTokenResult(true);
+        const role = idTokenResult.claims.role;
 
-      console.log("Användarroll:", role);
-      console.log("Välkommen Admin!");
+        console.log("Användarroll:", role);
+        console.log("Välkommen Admin!");
 
-      navigate("/dashboard");
-    } catch (err: any) {
-      console.error("Fel vid inloggning:", err.message);
-      setError("Fel vid inloggning. Kontrollera dina uppgifter.");
-    }
+        navigate("/dashboard");
+      } catch (err: any) {
+        console.error("Fel vid inloggning:", err.message);
+        setError("Fel vid inloggning. Kontrollera dina uppgifter.");
+      }
 
-
+    
   };
 
   return (
@@ -48,14 +48,14 @@ export const AdminLogin = () => {
       <div style={{ maxWidth: "300px", margin: "0 auto", flex: "1", display: "flex", flexDirection: "column", gap: "10px" }}>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="input-field"
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="input-field"
