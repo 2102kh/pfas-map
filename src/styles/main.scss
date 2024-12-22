@@ -1,28 +1,30 @@
 
+@use '_createAccount';
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-:root {
-  --mainColor: #4C51C6;
-  --mainColorLight: #607FF2;
-  --textColorLight:#EDECEA;
-  --textColorDark: rgb(22, 22, 22);
-  --textColor: white;
-  --textHoverColor: rgb(194, 182, 182);
-  --buttonColor:#838DB1;
-  --buttonSecondaryColor:#FD830D;
-  --buttonHoverColor: #263A69;
-  --buttonTextColor: rgb(22, 22, 22);
+  
 }
 
-// :root {
-//   --mainColor: rgb(102, 78, 108);
-//   --mainColorLight: rgb(58, 61, 67);
-//   --textColor: white;
-//   --textHoverColor: rgb(194, 182, 182);
-//   --buttonColor: #021602;
-//   --buttonHoverColor: #031903;
-//   --buttonTextColor: white;
-// }
+
+:root {
+  
+    --mainColor: #34606C; 
+    --mainColorLight: #91ACB3; 
+    --secondaryColorLight: #D4DBDA; 
+    --textColorDark: rgb(22, 22, 22); 
+    --textColor: #FFFFFF; 
+    --greenColor: #29BD9D; 
+    --greenColorlight: #29BD9D; 
+    --darkBlueColor: #263A69; 
+    --whiteColor: #FFFFFF; 
+  }
+  main{
+    background-color: var(--mainColorLight);
+    height: 60%;
+    
+  }
+  
+

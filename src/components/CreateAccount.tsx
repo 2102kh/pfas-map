@@ -1,9 +1,9 @@
 import { useState } from "react";
-import {createAdminAccount} from "../API/createAdminAccount.ts";
+import { createAdminAccount } from "../API/createAdminAccount.ts";
 
 
 
-export const CreateAccount= () => {
+export const CreateAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [city, setCity] = useState("");
@@ -25,36 +25,42 @@ export const CreateAccount= () => {
   };
 
   return (
-    <div>
-      <h2>Registrera ny admin</h2>
+    <div className="create-account">
+      <h2 className="create-account__title">Registrera ny admin</h2>
       <input
+        className="create-account__input"
         type="email"
         placeholder="E-post"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
+        className="create-account__input"
         type="password"
         placeholder="Lösenord"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
       <input
+        className="create-account__input"
         type="password"
         placeholder="Bekräfta Lösenord"
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
       <input
+        className="create-account__input"
         type="text"
         placeholder="Stad"
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
-      <button onClick={handleRegister}>Registrera</button>
-      <p>{message}</p>
-
+      <button className="create-account__button" onClick={handleRegister}>
+        Registrera
+      </button>
+      <p className="create-account__message">{message}</p>
     </div>
+
   );
 };
 

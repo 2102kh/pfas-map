@@ -49,7 +49,7 @@ const EditPfas = () => {
                     <div>
                         <p>City: {cityInfo.name}</p>
                         <div>Pfas Level:
-                            {isEditing ? <input value={level} onChange={(e) => setLevel(e.target.value)}/> :
+                            {isEditing ? <input value={level} onChange={(e) => setLevel(e.target.value)} title="Pfas Level" placeholder="Enter Pfas Level"/> :
                                 <span>{level}
 
                         </span>}

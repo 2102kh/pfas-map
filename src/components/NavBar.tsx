@@ -47,11 +47,7 @@ const { currentUser, logOut } = context;
               FAQ
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/contact" onClick={closeNavbar}>
-              Contact
-            </NavLink>
-          </li>
+         
           {currentUser ? (
     <li>
       <button onClick={handleLogOut} className="login-btn">
@@ -60,7 +56,7 @@ const { currentUser, logOut } = context;
     </li>
   ) : (
     <li>
-      <NavLink to="/login" onClick={closeNavbar} className="login-btn">
+      <NavLink to="/login-superadmin" onClick={closeNavbar} className="login-btn">
         Log in
       </NavLink>
     </li>

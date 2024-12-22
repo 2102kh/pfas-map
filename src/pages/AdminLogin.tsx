@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../config/firebase.ts";
+import "../styles/_admin-login.scss";
 
 
 export const AdminLogin = () => {
@@ -43,32 +44,33 @@ export const AdminLogin = () => {
   };
 
   return (
-    <div>
-      <h1>Admin från länsstyrelse</h1>
-      <div style={{ maxWidth: "300px", margin: "0 auto", flex: "1", display: "flex", flexDirection: "column", gap: "10px" }}>
-        <input
-          type="email"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="input-field"
-        />
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="input-field"
-        />
-        <button
-          onClick={handleLogin}
-          disabled={loading}
-          className={`login-button ${loading ? "loading" : ""}`}
-        >
-          {loading ? "Ladda ner..." : "Logga in"}
-        </button>
-      </div>
+    <div className="admin-login">
+    <h2>Admin från länsstyrelse</h2>
+    
+      <input
+        type="email"
+        placeholder="E-post"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="input-field"
+      />
+      <input
+        type="password"
+        placeholder="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="input-field"
+      />
+      <button
+        onClick={handleLogin}
+        disabled={loading}
+        className={`login-button ${loading ? "loading" : ""}`}
+      >
+        {loading ? "Ladda ner..." : "Logga in"}
+      </button>
     </div>
+  
+  
   );
 };
 

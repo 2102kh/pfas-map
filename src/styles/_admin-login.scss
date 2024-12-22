@@ -1,0 +1,87 @@
+.admin-login {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: var(--mainColorLight);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: var(--textColorDark);
+
+  
+    h2{
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      color: var(--textColor);
+      text-align: center;
+      font-size: 2rem;
+    }
+  
+    
+    input {
+      cursor: pointer;
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--mainColor);
+      border-radius: 6px;
+      font-size: 1rem;
+      background-color: var(--textColorLight);
+      color: var(--textColorDark);
+  
+      &:focus {
+        outline: none;
+        border-color: var(--textColorLight);
+      }
+    }
+    .login-button {
+      width: 100%;
+      border-radius:50%;
+      padding: 1rem;
+      background-color: var(--mainColor);
+      color: var(--textColor);
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: var(--buttonColor);
+      }
+  
+      &:disabled {
+        background-color: var(--buttonSecondaryColor);
+        cursor: not-allowed;
+      }
+  
+      &.loading {
+        background-color: var(--buttonSecondaryColor);
+        color: var(--textColorLight);
+      }
+    }
+  }
+  
+  
+  @media (max-width: 768px) {
+    .admin-login {
+      margin-top: 0;
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      h2{
+        margin-top: 10vh;
+        font-size: 1.5rem;
+      }
+  
+      .input,button {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+      }
+  
+      .login-button {
+        font-size: 1rem;
+        padding: 0.9rem;
+      }
+    }
+  }
+  

@@ -37,6 +37,7 @@ export const Home = () => {
 
 
     const locations = citiesInfo.filter(city => city.lng && city.lat && city.pfasData).map((city) => ({ city: city.name, lat: city.lat, lng: city.lng, info: `${city.name}: PFAS nivå  ${city.pfasData}` }));
+    
 
     locations.forEach((location) => {
       L.marker([location.lat, location.lng])
@@ -54,7 +55,7 @@ export const Home = () => {
       <div
         id="map"
         style={{
-          height: "600px",
+          height: "60vh",
           width: "100%",
           position: "relative",
           zIndex: 1,

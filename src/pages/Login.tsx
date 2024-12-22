@@ -3,6 +3,7 @@ import { useState } from "react";
 import { auth } from "../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { NavLink, useNavigate } from "react-router-dom";
+import "../styles/_login-superadmin.scss";
 
 
 export const Login = () => {
@@ -38,7 +39,7 @@ export const Login = () => {
 
     return (
         <div className="login-container">
-            <h2>Logga in</h2>
+            <h2>Super Admin</h2>
             <input
                 type="email"
                 placeholder="E-post"
@@ -55,17 +56,18 @@ export const Login = () => {
             {error && <p style={{ color: "red" }}>{error}</p>}
             <div className="form-footer">
                 <div className="form-footer">
-                    <NavLink to="/superadmin" className="form-link">
-                        Skapa ett konto för en Superadministratör
-                    </NavLink>
+                <NavLink to="/superadmin" className="form-link">
+  Skapa konto för Superadministratör
+</NavLink>
 
-                    <NavLink to="/create-account" className="form-link">
-                        Är du länsstyrelse-administratör? Skapa konto här
-                    </NavLink>
+<NavLink to="/create-account" className="form-link">
+  Skapa konto för Länsstyrelse-administratör
+</NavLink>
 
-                    <NavLink to="/admin-login" className="form-link">
-                        ADMIN LOGIN
-                    </NavLink>
+<NavLink to="/admin-login" className="form-link">
+  Logga in som Administratör
+</NavLink>
+
 
                 </div>
 

@@ -1,0 +1,129 @@
+.footer {
+  background-color:var(--secondaryColorLight);
+  color: var(--textColorDark);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  &__container {
+      display: flex;
+      flex-direction: column; 
+      
+    }
+  &__logo {
+      margin-bottom: 1rem;
+     
+      img {
+        max-width: 180px;
+      }
+    }
+  
+    &__social {
+      display: flex;
+      flex-direction: row; 
+      gap: 0.8rem; 
+      margin: 1rem 0;
+  
+      a {
+        font-size: 1.8rem; 
+        color:var(--textColorDark);
+        transition: color 0.3s;
+  
+        &:hover {
+          color: #0077b5; 
+        }
+      }
+    }
+  
+    &__links {
+      margin-top: 1rem;
+  
+      a {
+        display: block; 
+        margin: 0.3rem 0;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: var(--textColorDark);
+  
+        &:hover {
+          color: #007bff;
+        }
+      }
+    }
+  
+    &__contact {
+      margin-top: 1rem;
+  
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+  
+      p {
+        margin: 0.3rem 0;
+        font-size: 1.2rem;
+  
+        a {
+          color: #007bff;
+          text-decoration: none;
+  
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  
+    &__links {
+      margin-top: 1rem;
+  
+      h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+  
+      ul {
+        list-style: none;
+        padding: 0;
+  
+        li {
+          margin: 0.5rem 0;
+  
+          a {
+            color:var(--textColorDark);
+            text-decoration: none;
+            font-size: 1.2rem;
+  
+            &:hover {
+              color: #007bff;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+
+      &__social {
+        margin: 1rem 0;
+        
+          a{
+            font-size: 1.3rem;
+          }
+        
+          
+        
+      }
+  
+      &__links {
+        margin-top: 0.5rem;
+      }
+  
+      &__contact {
+        margin-top: 1rem;
+      }
+    }
+    
+  }

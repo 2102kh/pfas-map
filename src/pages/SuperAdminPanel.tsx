@@ -3,6 +3,7 @@ import { collection, deleteDoc, doc, getDocs, query, updateDoc, where } from "fi
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../config/firebase";
+import "../styles/_superAdmin.scss";
 
 
 interface Admin {
