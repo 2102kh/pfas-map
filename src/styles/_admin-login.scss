@@ -27,7 +27,7 @@
       border: 1px solid var(--mainColor);
       border-radius: 6px;
       font-size: 1rem;
-      background-color: var(--textColorLight);
+      background-color: var(--secondaryColorLight);
       color: var(--textColorDark);
   
       &:focus {
@@ -74,14 +74,7 @@
       p{
         margin-top: 1.3rem;
         font-size: 1.5rem;
-      }
-     
-    
-    
-      
-        
-       
-        
+      } 
         &:hover {
           background-color: var(--buttonColor);
         }
@@ -89,14 +82,11 @@
 
     }
 
-  
-  
-  
   @media (max-width: 768px) {
     .admin-login {
       margin-top: 0;
       margin-bottom: 1rem;
-      width: 100vw;
+      width:80vw;
       height: 100vh;
       border-radius: 0;
       gap:0.5rem;
@@ -115,8 +105,7 @@
         padding: 0.9rem;
       }
     
-    .register-admin-new{
-      
+    .register-admin-new{ 
       border-top: 2px solid var(--textColor);
       cursor: pointer;
       color: var(--textColor);
@@ -124,9 +113,6 @@
         font-size: 1.2rem;
       }
      
-    } 
-    
-      
-        
+    }      
   }
 }

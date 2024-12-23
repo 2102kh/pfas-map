@@ -4,6 +4,7 @@
   border-radius: 8px;
   color: var(--textColorDark);
   font-size: 1.5rem;
+  
 
   h2 {
     text-align: center;
@@ -26,7 +27,7 @@
     border: 1px solid var(--mainColor);
     border-radius: 4px;
     font-size: 1rem;
-    background-color: var(--textColorLight);
+    background-color: var(secondaryColorLight);
     color: var(--textColorDark);
 
     &:focus {
@@ -57,9 +58,9 @@
 
 @media (max-width: 768px) {
   .login-container {
-    padding: 2.5rem;
-    max-width: 90%;
+    width: 80vw;
     font-size: 1.5rem;
+    gap: 0.5rem;
     
     h2{
       font-size: 1.5rem;
@@ -76,8 +77,8 @@
       padding: 0.7rem;
     }
     button{
-      padding: 0.7rem;
-      font-size: 0.9rem;
+      padding: 0.9rem;
+      font-size: 1rem;
     }
   }
   

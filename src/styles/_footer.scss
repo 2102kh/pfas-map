@@ -6,11 +6,11 @@
   flex-direction: row;
   justify-content: space-around;
   margin-bottom: 0;
-  
-  h3{
+
+  h3 {
     font-size: 1.3rem;
   }
-  
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -22,7 +22,6 @@
       max-width: 180px;
     }
   }
-  
 
   &__social {
     display: flex;
@@ -42,13 +41,11 @@
   }
   .superadmin-login {
     margin-top: 1rem;
-    border-bottom: 2px solid var(--mainColor);
-   
-   
+    border-bottom: 1px solid var(--mainColor);
+
     a {
       text-decoration: none;
       color: var(--mainColor);
-      
     }
   }
   &__links {
@@ -71,7 +68,6 @@
     margin-top: 1rem;
 
     h3 {
-      
       margin-bottom: 0.5rem;
     }
 
@@ -130,7 +126,10 @@
       }
     }
     .superadmin-login {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
+      padding-bottom: 0.6rem;
+      font-size: 1.1rem;
+
       a {
         text-decoration: none;
         color: var(--textColorDark);
@@ -160,15 +159,9 @@
           }
         }
       }
-
-      &__contact {
-        margin-top: 1rem;
-
-        p {
-          margin: 0.3rem 0;
-          font-size: 1rem;
-        }
-      }
+    }
+    &__contact {
+      margin-top: 0.5rem;
     }
   }
 }

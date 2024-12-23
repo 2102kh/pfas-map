@@ -91,8 +91,9 @@
   @media (max-width: 768px) {
     .superadmin-panel {
       padding: 1.5rem;
-      max-width: 90%;
+      width: 80vw;
       height: 100vh;
+      margin: 2rem;
       &__title {
         font-size: 1.3rem;
         color: var(--mainColor);
@@ -106,8 +107,6 @@
       }
       
     }
-  
-    
   
     .superadmin-panel__list-item {
       flex-direction: column;

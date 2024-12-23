@@ -93,7 +93,10 @@ header {
     }
     .menu-list {
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.7rem;
+        .login-btn {
+         padding: 0.6rem 1.5rem;
+      }
     }
     nav {
       position: fixed;
