@@ -6,12 +6,12 @@ import Footer from "./Footer";
 
 export const Layout = () => {
   return (
-    <div>
+    <div className="layout">
       <header>
         <NavBar />
       </header>
       <main>
-        <Outlet /> 
+        <Outlet />
       </main>
       <Footer />
     </div>

@@ -6,6 +6,15 @@ header {
   padding: 0 2rem;
   background-color: var(--mainColorLight);
   color: var(--textColor);
+  .logo{
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+    
+    img {
+      max-width: 50px;
+    }
+  }
 
   .nav-btn {
     padding: 5px;
@@ -20,21 +29,39 @@ header {
   }
   .menu-list {
     display: flex;
+    align-items: center;
     font-size: 1.2rem;
     list-style: none;
     text-transform: uppercase;
     .login-btn {
-      background-color: var(--textColor);
-      color: var(--mainColor);
+      text-transform: none;
+      background-color: var(--greenColor);
+      color: var(--textHoverColor);
       padding: 0.8rem 2rem;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s ease;
       &:hover {
-        background-color: var(--textHoverColor);
+        background-color: var(--greenColor);
         color: var(--textColor);
       }
+      
+      }
+      .logout-btn{
+        background-color: var(--mainColor);
+        text-transform: uppercase;
+        color: var(--textColor);
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: var(--greenColor);
+          color: var(--textColor);
+        }
     }
   }
   
@@ -53,6 +80,11 @@ header {
 }
 @media only screen and (max-width: 768px) {
   header {
+    .logo{
+      img {
+        width: 35px;
+      }
+    }
    
     .nav-btn {
       display: block;
@@ -75,10 +107,12 @@ header {
       background-color: var(--mainColor);
       transition: transform 1.5s ease-in-out;
       transform: translateY(-100vh);
+      z-index: 1000;
       
 
       &.responsive_nav {
         transform: none;
+        z-index: 1000;
        
       }
       .nav-close-btn {

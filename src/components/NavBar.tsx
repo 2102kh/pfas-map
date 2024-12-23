@@ -4,6 +4,7 @@ import { RiMenu2Line } from "react-icons/ri";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/_navBar.scss";
 import { AuthContext } from "../contexts/AuthContext";
+import cleanPfasLogo from "../assets/CleanLogoTrans.png";
 
 export const NavBar = () => {
   const [isResponsive, setIsResponsive] = useState(false);
@@ -35,6 +36,9 @@ const { currentUser, logOut } = context;
 
   return (
     <>
+    <div className="logo">
+      <img src={cleanPfasLogo} alt="cleanPfas logo" />
+    </div>
       <nav className={isResponsive ? "responsive_nav" : ""}>
         <ul className="menu-list">
           <li>
@@ -50,16 +54,17 @@ const { currentUser, logOut } = context;
          
           {currentUser ? (
     <li>
-      <button onClick={handleLogOut} className="login-btn">
+      <button onClick={handleLogOut} className="logout-btn">
         Log out
       </button>
     </li>
   ) : (
     <li>
-      <NavLink to="/login-superadmin" onClick={closeNavbar} className="login-btn">
-        Log in
-      </NavLink>
-    </li>
+  <NavLink to="/admin-login" onClick={closeNavbar} className="login-btn">
+  Administrera PFAS mätningar 
+  </NavLink>
+</li>
+
   )}
         </ul>
         <button

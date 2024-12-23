@@ -1,0 +1,172 @@
+.edit-pfas {
+  width: 70vw;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--secondaryColorLight);
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    color: var(--darkBlueColor);
+    text-align: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    gap: 3.5rem;
+    background-color: var(--secondaryColorLight);
+    padding: 1.5rem;
+    align-items: center;
+    border-radius: 6px;
+    
+  }
+
+  &__city {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--textColorDark);
+  }
+
+  &__level {
+    display: flex;
+    flex-direction: row;
+    gap: 1.8rem;
+   
+    align-items: center;
+    .edit-pfas__label {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--textColorDark);
+    
+    }
+
+    .edit-pfas__input {
+      padding: 0.9rem;
+      font-size: 1.3rem;
+      color: #333;
+      border-color: none;
+
+      &:focus {
+        border-color: var(--mainColor);
+        outline: none;
+        box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+      }
+    }
+
+    .edit-pfas__value {
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+  }
+
+  &__button {
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &--save {
+      padding: 1rem 2rem;
+      background-color: var(--greenColor);
+      color: var(--textColor);
+
+      &:hover {
+        background-color: var(--greenColorlight);
+      }
+    }
+
+    &--edit {
+      padding: 0.7rem 2.2rem;
+      background-color: var(--darkBlueColor);
+      color: var(--textColor);
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: var(--mainColor);
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+    .edit-pfas {
+        width: 100%;
+        padding: 1.5rem;
+        border: none;
+    
+      
+        h2 {
+          font-size: 1.5rem;
+          margin-bottom: 2.8rem;
+        }
+      
+        &__container {
+          display: flex;
+          flex-direction: column;
+          gap: 3rem;
+          padding: 1rem;
+          border-radius: 0;
+        }
+      
+        &__city {
+          font-size: 1.2rem;
+         
+        }
+      
+        &__level {
+          display: flex;
+          flex-direction: column;
+          gap: 1.3rem;
+         
+          align-items: center;
+          .edit-pfas__label {
+           font-size: 1.3rem;
+          
+          }
+      
+          .edit-pfas__input {
+            padding: 0.5rem;
+            font-size: 1.1rem;
+          }
+      
+          .edit-pfas__value {
+            font-size: 1.3rem;
+            color: var(--text);
+          }
+        }
+      
+        &__button {
+          padding: 0.5rem 1rem;
+          font-size: 1.3rem;
+          &--save {
+            padding: 0.6rem 2.5rem;
+            background-color:var(--greenColor);
+            color:var(--textColor);
+            &:hover {
+              background-color: var(--greenColorlight);
+            }
+          }
+      
+          &--edit {
+            padding: 0.6rem 2rem;
+            background-color: var(--mainColor);
+            color: var(--textColor);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+      
+            &:hover {
+              background-color: var(--darkBlueColor);
+            }
+          }
+        }
+      }
+
+
+}

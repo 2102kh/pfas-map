@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createAdminAccount } from "../API/createAdminAccount.ts";
+import "../styles/_createAccount.scss";
 
 
 

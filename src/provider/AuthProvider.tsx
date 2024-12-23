@@ -21,8 +21,6 @@ type ExtendedUser = {
   providerData: FirebaseUser["providerData"];
 };
 
-
-
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [currentUser, setCurrentUser] = useState<ExtendedUser | null>(null);
 

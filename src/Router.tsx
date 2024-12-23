@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
         path: "faq",
         element: <FaqPage />,
       },
-      
+
       {
         path: "superadmin",
         element: <SuperAdminPanel />,
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <EditPfas/>,
+        element: <EditPfas />,
       },
     ],
   },

@@ -99,7 +99,6 @@ const SuperAdminPanel = () => {
     }
   };
 
-  // Ta bort administratör
   const handleDelete = async (id: string) => {
     try {
       await deleteDoc(doc(db, "admins", id));
@@ -116,16 +115,16 @@ const SuperAdminPanel = () => {
 
   return (
     <div className="superadmin-panel">
-      <h2 className="superadmin-panel__title">Vällkommen Superadmin Panel</h2>
+      <h2 className="superadmin-panel__title">Superadmin Kontrollpanel</h2>
       {pendingAdmins.length === 0 ? (
-        <p>Inga administratörer väntar på godkännande.</p>
+        <p className="superadmin-text">Inga administratörer väntar på godkännande.</p>
       ) : (
         <ul className="superadmin-panel__list">
           {pendingAdmins.map((admin) => (
             <li key={admin.id} className="superadmin-panel__list-item">
               <div className="superadmin-panel__list-details">
-                <p>Email: {admin.email}</p>
-                <p>Ort: {admin.city}</p>
+                <p>Email: <strong>{admin.email}</strong></p>
+                <p>Ort: <strong>{admin.city}</strong></p>
               </div>
               <div className="superadmin-panel__list-buttons">
                 <button

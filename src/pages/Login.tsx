@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { auth } from "../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/_login-superadmin.scss";
 
 
@@ -54,29 +54,7 @@ export const Login = () => {
             />
             <button onClick={handleLogin}>Logga in</button>
             {error && <p style={{ color: "red" }}>{error}</p>}
-            <div className="form-footer">
-                <div className="form-footer">
-                <NavLink to="/superadmin" className="form-link">
-  Skapa konto för Superadministratör
-</NavLink>
-
-<NavLink to="/create-account" className="form-link">
-  Skapa konto för Länsstyrelse-administratör
-</NavLink>
-
-<NavLink to="/admin-login" className="form-link">
-  Logga in som Administratör
-</NavLink>
-
-
-                </div>
-
-            </div>
-
         </div>
-
-
-
     );
 };
 

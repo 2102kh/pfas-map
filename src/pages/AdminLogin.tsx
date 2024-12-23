@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {signInWithEmailAndPassword} from "firebase/auth";
-import {auth} from "../config/firebase.ts";
+import { NavLink, useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase.ts";
 import "../styles/_admin-login.scss";
 
 
@@ -21,46 +21,44 @@ export const AdminLogin = () => {
     setLoading(true);
     setError("");
 
-      try {
+    try {
 
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-        const user = userCredential.user;
+      const user = userCredential.user;
 
-        // Hämta rollen från Custom Claims
-        const idTokenResult = await user.getIdTokenResult(true);
-        const role = idTokenResult.claims.role;
+      // Hämta rollen från Custom Claims
+      const idTokenResult = await user.getIdTokenResult(true);
+      const role = idTokenResult.claims.role;
 
-        console.log("Användarroll:", role);
-        console.log("Välkommen Admin!");
+      console.log("Användarroll:", role);
+      console.log("Välkommen Admin!");
 
-        navigate("/dashboard");
-      } catch (err: any) {
-        console.error("Fel vid inloggning:", err.message);
-        setError("Fel vid inloggning. Kontrollera dina uppgifter.");
-      }
+      navigate("/dashboard");
+    } catch (err: any) {
+      console.error("Fel vid inloggning:", err.message);
+      setError("Fel vid inloggning. Kontrollera dina uppgifter.");
+    }
 
-    
+
   };
 
   return (
-    <div className="admin-login">
-    <h2>Admin från länsstyrelse</h2>
-    
+    <><div className="admin-login">
+      <h2>Admin från länsstyrelse</h2>
+
       <input
         type="email"
         placeholder="E-post"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="input-field"
-      />
+        className="input-field" />
       <input
         type="password"
         placeholder="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="input-field"
-      />
+        className="input-field" />
       <button
         onClick={handleLogin}
         disabled={loading}
@@ -68,9 +66,17 @@ export const AdminLogin = () => {
       >
         {loading ? "Ladda ner..." : "Logga in"}
       </button>
+      
+        <NavLink to="/create-account" className="register-admin-new">
+          <p>Har du inget konto? Registrera dig här!</p>
+        </NavLink>
+      
     </div>
-  
-  
+
+    </>
+
+
+
   );
 };
 

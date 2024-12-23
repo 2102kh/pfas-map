@@ -5,8 +5,6 @@ export interface ICityFromFirestore {
     lat: number;
     lng: number;
 }
-
-
 export interface ICity extends ICityFromFirestore {
     uid: string;
 }

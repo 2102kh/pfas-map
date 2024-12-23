@@ -1,23 +1,25 @@
 .admin-login {
     max-width: 600px;
-    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
     padding: 2.5rem;
-    background-color: var(--mainColorLight);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100%;
     color: var(--textColorDark);
-
-  
+    gap:2rem;
+    font-size: 2rem;
+    
+    
     h2{
       margin-top: 2rem;
       margin-bottom: 2rem;
-      color: var(--textColor);
+      color: var(--mainColor);
       text-align: center;
       font-size: 2rem;
     }
   
     
     input {
+      font-size: 1.9rem;
       cursor: pointer;
       width: 100%;
       padding: 0.8rem;
@@ -35,22 +37,22 @@
     }
     .login-button {
       width: 100%;
-      border-radius:50%;
-      padding: 1rem;
+      border-radius:50px;
       background-color: var(--mainColor);
+      padding: 1rem;
       color: var(--textColor);
       border: none;
-      border-radius: 50px;
-      font-size: 1rem;
+      font-size: 1.3rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      margin-bottom: 2rem;
   
       &:hover {
-        background-color: var(--buttonColor);
+        background-color: var(--greenColor);
       }
   
       &:disabled {
-        background-color: var(--buttonSecondaryColor);
+        background-color: var(--SecondaryColor);
         cursor: not-allowed;
       }
   
@@ -59,17 +61,47 @@
         color: var(--textColorLight);
       }
     }
-  }
+    .register-admin-new{
+      
+      border-top: 2px solid var(--textColor);
+      cursor: pointer;
+      
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      padding: 0.9rem;
+      color: var(--textColorDark);
+      text-align: center;
+      p{
+        margin-top: 1.3rem;
+        font-size: 1.5rem;
+      }
+     
+    
+    
+      
+        
+       
+        
+        &:hover {
+          background-color: var(--buttonColor);
+        }
+      }
+
+    }
+
+  
   
   
   @media (max-width: 768px) {
     .admin-login {
       margin-top: 0;
+      margin-bottom: 1rem;
       width: 100vw;
       height: 100vh;
       border-radius: 0;
+      gap:0.5rem;
       h2{
-        margin-top: 10vh;
+        margin-top: 5vh;
         font-size: 1.5rem;
       }
   
@@ -82,6 +114,19 @@
         font-size: 1rem;
         padding: 0.9rem;
       }
-    }
+    
+    .register-admin-new{
+      
+      border-top: 2px solid var(--textColor);
+      cursor: pointer;
+      color: var(--textColor);
+      p{
+        font-size: 1.2rem;
+      }
+     
+    } 
+    
+      
+        
   }
-  
+}
