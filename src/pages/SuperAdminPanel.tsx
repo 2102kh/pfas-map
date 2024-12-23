@@ -88,7 +88,7 @@ const SuperAdminPanel = () => {
     }
   };
   if (loading) return <p>Laddar...</p>;
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
+  if (error) return <p className="red-error">{error}</p>;
   const handleApprove = async (id: string) => {
     try {
       await updateDoc(doc(db, "admins", id), { role: "admin" });

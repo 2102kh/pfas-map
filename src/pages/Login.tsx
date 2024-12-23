@@ -53,7 +53,7 @@ export const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={handleLogin}>Logga in</button>
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <p className="red-error">{error}</p>}
         </div>
     );
 };

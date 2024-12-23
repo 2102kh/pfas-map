@@ -51,13 +51,7 @@ export const PFASMap = () => {
           Är du länsstyrelse-administratör? logga in här
         </NavLink>
         <div
-          id="map"
-          style={{
-            height: "600px",
-            width: "100%",
-            position: "relative",
-            zIndex: 1,
-          }}
+         
         >
   
   

@@ -59,6 +59,7 @@ export const AdminLogin = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className="input-field" />
+      {error && <p className="error-message">{error}</p>}
       <button
         onClick={handleLogin}
         disabled={loading}

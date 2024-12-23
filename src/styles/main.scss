@@ -34,7 +34,9 @@ main {
 header {
   min-height: 80px;
 }
-
+.red-error{
+  color:red;
+}
 @media screen and (max-width: 768px) {
   h2 {
     font-size: 1.3rem;
