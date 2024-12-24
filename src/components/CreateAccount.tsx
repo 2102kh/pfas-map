@@ -1,17 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createAdminAccount } from "../API/createAdminAccount.ts";
 import "../styles/_createAccount.scss";
-
-
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../config/firebase.ts";
 
 export const CreateAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [city, setCity] = useState("");
-  const [message, setMessage] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [city, setCity] = useState(""); // För länsstyrelseval
+  const [message, setMessage] = useState("");
+  const [cities, setCities] = useState<string[]>([]); // För att lagra hämtade länsstyrelser
+
+  
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        const citiesCollection = collection(db, "cities"); // Antar att samlingen heter "cities"
+        const snapshot = await getDocs(citiesCollection);
+        const cityNames = snapshot.docs.map((doc) => doc.data().name); // Antar att dokumenten har ett fält "name"
+        setCities(cityNames);
+      } catch (error) {
+        console.error("Fel vid hämtning av länsstyrelser:", error);
+      }
+    };
+
+    fetchCities();
+  }, []);
 
   const handleRegister = async () => {
+    if (password !== confirmPassword) {
+      setMessage("Lösenordet matchar inte.");
+      return;
+    }
+
+    if (!city) {
+      setMessage("Vänligen välj en länsstyrelse.");
+      return;
+    }
+
     try {
       const response = await createAdminAccount(email, password, city);
       setMessage(response.message);
@@ -49,19 +76,29 @@ export const CreateAccount = () => {
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
-      <input
-        className="create-account__input"
-        type="text"
-        placeholder="Stad"
+      <select
+        className="create-account__select"
         value={city}
         onChange={(e) => setCity(e.target.value)}
-      />
+      >
+        <option value="" disabled>
+          Välj länsstyrelse
+        </option>
+        {cities.length === 0 ? (
+          <option>Laddar länsstyrelser...</option>
+        ) : (
+          cities.map((region, index) => (
+            <option key={index} value={region}>
+              {region}
+            </option>
+          ))
+        )}
+      </select>
       <button className="create-account__button" onClick={handleRegister}>
         Registrera
       </button>
       <p className="create-account__message">{message}</p>
     </div>
-
   );
 };
 

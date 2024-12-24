@@ -3,6 +3,7 @@ import { collection, deleteDoc, doc, getDocs, query, updateDoc, where } from "fi
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../config/firebase";
+import { ClipLoader } from "react-spinners";
 import "../styles/_superAdmin.scss";
 
 
@@ -110,7 +111,10 @@ const SuperAdminPanel = () => {
   };
 
   if (loading) {
-    return <p>Laddar...</p>;
+    <div className="spinner-container">
+    <ClipLoader color="#3498db" size={50} />
+    <p>Laddar...</p>
+  </div>
   }
 
   return (

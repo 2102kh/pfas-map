@@ -20,6 +20,7 @@ export async function createAdminAccount(email: string, password: string, city: 
 
 
 
-    return {message: `Admin registrerad med status "pending": ${email}`};
+    return { message: `Admin registrerad med status "pending". Vänta på godkännande: ${email}` };
+
 
 }

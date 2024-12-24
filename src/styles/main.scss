@@ -4,7 +4,7 @@
   box-sizing: border-box;
   
   h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -19,6 +19,7 @@
   --darkBlueColor: #263a69;
   --whiteColor: #ffffff;
   overflow-x: hidden;
+  background-color: var(--mainColorLight);
 }
 main {
   background-color: var(--mainColorLight);

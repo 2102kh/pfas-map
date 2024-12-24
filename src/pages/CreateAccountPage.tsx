@@ -5,3 +5,4 @@ export const CreateAccountPage = () => {
         <CreateAccount />
     )
 }
+export default CreateAccountPage;

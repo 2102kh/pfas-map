@@ -1,12 +1,14 @@
 .create-account {
-  max-width: 600px;
+   
+    max-width: 600px;
     display: flex;
     flex-direction: column;
-    padding: 2.5rem;
+    justify-content: center;
     height: 100%;
     color: var(--textColorDark);
-    gap:1.1rem;
-    font-size: 2rem;
+    gap:1rem;
+    padding-bottom: 3.5rem;
+    
   &__title {
     font-size: 2rem;
     margin-bottom: 2rem;
@@ -16,31 +18,48 @@
   &__input {
     cursor: pointer;
     width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
+    padding: 0.6rem 1rem;
+    
     border: 1px solid var(--mainColor);
     border-radius: 6px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: var(--textColorDark);
     background-color: var(--secondaryColorLight);
   
 
     &:focus {
       outline: none;
-      border-color: var(--buttonColor);
+      border-color: var(--mainColor);
+    }
+  }
+  &__select{
+    cursor: pointer;
+    width: 100%;
+    padding: 0.8rem;
+    
+    border: 1px solid var(--mainColor);
+    border-radius: 6px;
+    font-size: 1.2rem;
+    color: var(--textColorDark);
+    background-color: var(--secondaryColorLight);
+    &:focus {
+      outline: none;
+      border-color: var(--mainColor);
     }
   }
 
   &__button {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.8rem;
     background-color: var(--mainColor);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s;
     color: var(--textColor);
+    margin-bottom: 1.2rem;
+    margin-top: 1.1rem;
 
     &:hover {
       background-color: var(--greenColor);
@@ -48,16 +67,18 @@
   }
 
   &__message {
-    margin-top: 1rem;
+   
     font-size: 1.2rem;
     color: var(--textColor);
+    text-align: center;
+   
   }
 }
 
 @media (max-width: 768px) {
   .create-account {
     margin-top: 20px;
-    max-width: 80vw;
+    width: 80vw;
     padding: 1.5rem;
       height: 100vh;
       gap:0.7rem;
@@ -72,15 +93,26 @@
       cursor: pointer;
       width: 100%;
       padding: 0.6rem;
-      margin-bottom: 0.5rem;
+      
       font-size: 0.8rem;
     }
+    &__select{
+     
+      padding: 0.6rem;
+      
+      border: 1px solid var(--mainColor);
+     
+      font-size: 0.8rem;
+      
+     
+      }
   
     &__button {
      
-      padding: 0.6rem;
-      font-size: 1.1rem;
+      padding: 0.8rem;
+      font-size: 1rem;
       border: none;
+      margin-top: 0.6rem;
     }
   
     &__message {
