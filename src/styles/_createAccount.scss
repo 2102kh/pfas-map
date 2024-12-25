@@ -1,9 +1,10 @@
 .create-account {
    
-    max-width: 600px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 100%;
     color: var(--textColorDark);
     gap:1rem;
@@ -18,7 +19,7 @@
   &__input {
     cursor: pointer;
     width: 100%;
-    padding: 0.6rem 1rem;
+    padding: 0.8rem 1rem;
     
     border: 1px solid var(--mainColor);
     border-radius: 6px;
@@ -50,7 +51,7 @@
 
   &__button {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.9rem;
     background-color: var(--mainColor);
     font-size: 1.2rem;
     border: none;
@@ -78,7 +79,7 @@
 @media (max-width: 768px) {
   .create-account {
     margin-top: 20px;
-    width: 80vw;
+    width: 70vw;
     padding: 1.5rem;
       height: 100vh;
       gap:0.7rem;

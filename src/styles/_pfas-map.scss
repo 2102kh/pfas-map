@@ -4,4 +4,19 @@
     width: 100%;
     position: relative;
     z-index: 1;
+    .custom-icon{
+        width:28px;
+        height: 35px;
+    }
+    
+}
+@media screen and (max-width: 768px) {
+    #map{
+        height: 50vh;
+        .custom-icon{
+            width:24px;
+            height: 25px;
+        }
+    }
+    
 }

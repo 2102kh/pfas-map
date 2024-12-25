@@ -18,16 +18,24 @@
   --greenColorlight: #29bd9d;
   --darkBlueColor: #263a69;
   --whiteColor: #ffffff;
-  overflow-x: hidden;
+  
+ 
+  
+}
+html,body{
+  height: 100vh;
+  margin: 0;
   background-color: var(--mainColorLight);
+  
 }
 main {
+  flex: 1;
   background-color: var(--mainColorLight);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 65vh;
+  
 }
 .layout {
   display: flex;
