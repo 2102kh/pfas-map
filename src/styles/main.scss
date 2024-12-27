@@ -3,9 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   
-  h2 {
-    font-size: 1.8rem;
-  }
+  
 }
 
 :root {
@@ -41,6 +39,7 @@ main {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100vw;
 }
 header {
   min-height: 80px;
