@@ -1,22 +1,16 @@
-
-#map{
-    height: 70vh;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    .custom-icon{
-        width:28px;
-        height: 35px;
-    }
-    
+#map {
+  height: 65vh;
+  width: 100vw;
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--mainColor);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+ 
 }
 @media screen and (max-width: 768px) {
-    #map{
-        height: 50vh;
-        .custom-icon{
-            width:24px;
-            height: 25px;
-        }
-    }
-    
+  #map {
+    height: 60vh;
+    border: none;
+  }
+  
 }
