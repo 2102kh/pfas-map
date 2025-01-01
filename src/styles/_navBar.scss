@@ -6,6 +6,7 @@ header {
   padding: 0 2rem;
   background-color: var(--mainColorLight);
   color: var(--textColor);
+
   .logo {
     display: flex;
     align-items: center;
@@ -73,7 +74,8 @@ header {
     }
 
     &.active {
-      border-bottom: 2px solid var(--textColor);
+      border-bottom: 1.5px solid var(--mainColor);
+      color: var(--mainColor);
     }
   }
 }

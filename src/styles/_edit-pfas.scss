@@ -10,7 +10,6 @@
     color: var(--darkBlueColor);
     text-align: center;
   }
-
   &__container {
     display: flex;
     flex-direction: row;
@@ -46,7 +45,6 @@
       color: #333;
       border: none;
       width: 80px;
-
       &:focus {
         border-color: var(--mainColor);
         outline: none;
@@ -67,12 +65,10 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-
     &--save {
       padding: 1rem 2rem;
       background-color: var(--greenColor);
       color: var(--textColor);
-
       &:hover {
         background-color: var(--greenColorlight);
       }
@@ -91,7 +87,10 @@
         background-color: var(--mainColor);
       }
     }
+    
+    
   }
+  
 }
 @media screen and (max-width: 768px) {
   .edit-pfas {
@@ -120,17 +119,14 @@
       display: flex;
       flex-direction: column;
       gap: 1.3rem;
-
       align-items: center;
       .edit-pfas__label {
         font-size: 1.3rem;
       }
-
       .edit-pfas__input {
         padding: 0.5rem;
         font-size: 1.1rem;
       }
-
       .edit-pfas__value {
         font-size: 1.3rem;
         color: var(--text);

@@ -8,17 +8,17 @@ export const CreateAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [city, setCity] = useState(""); // För länsstyrelseval
+  const [city, setCity] = useState(""); 
   const [message, setMessage] = useState("");
-  const [cities, setCities] = useState<string[]>([]); // För att lagra hämtade länsstyrelser
+  const [cities, setCities] = useState<string[]>([]); 
 
   
   useEffect(() => {
     const fetchCities = async () => {
       try {
-        const citiesCollection = collection(db, "cities"); // Antar att samlingen heter "cities"
+        const citiesCollection = collection(db, "cities");
         const snapshot = await getDocs(citiesCollection);
-        const cityNames = snapshot.docs.map((doc) => doc.data().name); // Antar att dokumenten har ett fält "name"
+        const cityNames = snapshot.docs.map((doc) => doc.data().name); 
         setCities(cityNames);
       } catch (error) {
         console.error("Fel vid hämtning av länsstyrelser:", error);

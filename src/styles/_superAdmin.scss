@@ -4,7 +4,7 @@
   padding: 2rem;
   border-radius: 8px;
   width: 70vw;
-  margin: 2rem ;
+  margin: 2rem;
   overflow-y: auto;
 
   &__title {
@@ -15,7 +15,6 @@
   }
   p {
     font-size: 1.3rem;
-   
   }
   .red-error {
     color: red;
@@ -27,23 +26,20 @@
   }
 
   &__list-item {
-    
     margin-bottom: 1rem;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
-    
-   
-
     &:last-child {
       margin-bottom: 0;
     }
   }
-
+  .superadmin-text {
+    text-align: center;
+  }
   &__list-details {
-  
-  font-size: 1rem;
-  color: var(--textColorDark);
+    font-size: 1rem;
+    color: var(--textColorDark);
 
     p {
       margin: 0.5rem 0;
@@ -53,7 +49,6 @@
   &__list-buttons {
     display: flex;
     gap: 0.8rem;
-   
     padding: 1rem;
     border-bottom: 1px solid var(--mainColor);
 
@@ -97,7 +92,6 @@
     margin: 1.3rem;
     gap: 1rem;
     overflow-y: auto;
-    
 
     &__title {
       font-size: 1.3rem;
@@ -105,7 +99,6 @@
     }
     p {
       font-size: 1.1rem;
-      
     }
     .red-error {
       color: red;
@@ -123,9 +116,6 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-     
-      
-
       &:last-child {
         margin-bottom: 0.5rem;
       }
@@ -141,7 +131,6 @@
       flex-direction: column;
       gap: 0.8rem;
       margin: 0 1rem;
-    
 
       .approve {
         padding: 0.5rem 1.2rem;

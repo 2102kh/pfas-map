@@ -1,115 +1,110 @@
 .admin-login {
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 2rem;
+  color: var(--textColorDark);
+  gap: 1.2rem;
 
-    color: var(--textColorDark);
-    gap:1.2rem;
-    
-   
-    h2{
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      color: var(--mainColor);
-      text-align: center;
-      
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: var(--mainColor);
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  input {
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--mainColor);
+    border-radius: 6px;
+    background-color: var(--secondaryColorLight);
+    color: var(--mainColor);
+
+    &:focus {
+      outline: none;
+      border-color: var(--mainColor);
     }
-  
-    
-    input {
-      font-size: 1.2rem;
-      cursor: pointer;
-      width: 100%;
-      padding: 0.8rem;
-      border: 1px solid var(--mainColor);
-      border-radius: 6px;
-      background-color: var(--secondaryColorLight);
-      color: var(--mainColor);
-  
-      &:focus {
-        outline: none;
-        border-color: var(--mainColor);
-      }
+  }
+  .login-button {
+    width: 100%;
+    border-radius: 50px;
+    background-color: var(--mainColor);
+    padding: 0.9rem;
+    color: var(--textColor);
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 1.2rem;
+
+    &:hover {
+      background-color: var(--greenColor);
     }
-    .login-button {
-      width: 100%;
-      border-radius:50px;
-      background-color: var(--mainColor);
-      padding: 0.9rem;
-      color: var(--textColor);
-      border: none;
+
+    &:disabled {
+      background-color: var(--SecondaryColor);
+      cursor: not-allowed;
+    }
+
+    &.loading {
+      background-color: var(--buttonSecondaryColor);
+      color: var(--textColorLight);
+    }
+  }
+  .register-admin-new {
+    border-top: 1.5px solid var(--textColor);
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    padding: 0.9rem;
+    color: var(--textColor);
+    text-align: center;
+    p {
+      margin-top: 1rem;
       font-size: 1.3rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
       margin-bottom: 1.2rem;
-  
-      &:hover {
-        background-color: var(--greenColor);
-      }
-  
-      &:disabled {
-        background-color: var(--SecondaryColor);
-        cursor: not-allowed;
-      }
-  
-      &.loading {
-        background-color: var(--buttonSecondaryColor);
-        color: var(--textColorLight);
-      }
     }
-    .register-admin-new{
-      border-top: 1.5px solid var(--textColor);
-      transition: background-color 0.3s ease;
-      text-decoration: none;
+    &:hover {
+      background-color: var(--buttonColor);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-login {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    width: 80vw;
+    height: 100vh;
+    border-radius: 0;
+    gap: 0.9rem;
+    h2 {
+      margin-top: 5vh;
+      font-size: 1.5rem;
+    }
+
+    .input,
+    button {
+      font-size: 0.5rem;
+      padding: 0.4rem;
+    }
+
+    .login-button {
+      margin-top: 1rem;
+      font-size: 1rem;
       padding: 0.9rem;
-      color: var(--textColor);
-      text-align: center;
-      p{
-        margin-top: 1rem;
-        font-size: 1.3rem;
-        margin-bottom:1.2rem ;
-      } 
-        &:hover {
-          background-color: var(--buttonColor);
-        }
-      }
-
     }
 
-  @media (max-width: 768px) {
-    .admin-login {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      width:80vw;
-      height: 100vh;
-      border-radius: 0;
-      gap:0.9rem;
-      h2{
-        margin-top: 5vh;
-        font-size: 1.5rem;
-      }
-  
-      .input,button {
-        font-size: 0.5rem;
-        padding: 0.4rem;
-      }
-  
-      .login-button {
-        margin-top:1rem;
-        font-size: 1rem;
-        padding: 0.9rem;
-      }
-    
-    .register-admin-new{ 
+    .register-admin-new {
       border-top: 2px solid var(--textColor);
       cursor: pointer;
       color: var(--textColor);
-      p{
+      p {
         font-size: 1.2rem;
       }
-     
-    }      
+    }
   }
 }

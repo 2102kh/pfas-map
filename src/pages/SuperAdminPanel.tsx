@@ -112,9 +112,9 @@ const SuperAdminPanel = () => {
 
   if (loading) {
     <div className="spinner-container">
-    <ClipLoader color="#3498db" size={50} />
-    <p>Laddar...</p>
-  </div>
+      <ClipLoader color="#3498db" size={50} />
+      <p>Laddar...</p>
+    </div>
   }
 
   return (

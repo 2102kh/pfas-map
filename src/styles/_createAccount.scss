@@ -1,17 +1,18 @@
 .create-account {
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    color: var(--textColorDark);
-    gap:1rem;
-    padding-bottom: 3.5rem;
-    
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--textColorDark);
+  gap: 1rem;
+  padding: 1rem 2rem;
+
   &__title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
     color: var(--mainColor);
   }
 
@@ -19,24 +20,20 @@
     cursor: pointer;
     width: 100%;
     padding: 0.8rem 1rem;
-    
     border: 1px solid var(--mainColor);
     border-radius: 6px;
     font-size: 1.2rem;
     color: var(--textColorDark);
     background-color: var(--secondaryColorLight);
-  
-
     &:focus {
       outline: none;
       border-color: var(--mainColor);
     }
   }
-  &__select{
+  &__select {
     cursor: pointer;
     width: 100%;
     padding: 0.8rem;
-    
     border: 1px solid var(--mainColor);
     border-radius: 6px;
     font-size: 1.2rem;
@@ -67,11 +64,9 @@
   }
 
   &__message {
-   
     font-size: 1.2rem;
     color: var(--textColor);
     text-align: center;
-   
   }
 }
 
@@ -80,45 +75,37 @@
     margin-top: 20px;
     width: 70vw;
     padding: 1.5rem;
-      height: 100vh;
-      gap:0.7rem;
-      font-size:1.5rem;
+    height: 100vh;
+    gap: 0.7rem;
+    font-size: 1.5rem;
     &__title {
       font-size: 1.5rem;
       margin-bottom: 1rem;
       color: var(--mainColor);
     }
-  
+
     &__input {
       cursor: pointer;
       width: 100%;
       padding: 0.6rem;
-      
       font-size: 0.8rem;
     }
-    &__select{
-     
+    &__select {
       padding: 0.6rem;
-      
       border: 1px solid var(--mainColor);
-     
       font-size: 0.8rem;
-      
-     
-      }
-  
+    }
+
     &__button {
-     
       padding: 0.8rem;
       font-size: 1rem;
       border: none;
       margin-top: 0.6rem;
     }
-  
+
     &__message {
       margin-top: 0.3rem;
       font-size: 0.8rem;
-      
     }
   }
 }

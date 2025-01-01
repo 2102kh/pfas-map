@@ -1,16 +1,13 @@
 #map {
-  height: 65vh;
+  height: 100%;
   width: 100vw;
   position: relative;
   z-index: 1;
   border: 1px solid var(--mainColor);
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
- 
 }
 @media screen and (max-width: 768px) {
   #map {
     height: 60vh;
     border: none;
   }
-  
 }

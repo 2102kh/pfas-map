@@ -43,7 +43,7 @@ const { currentUser, logOut } = context;
         <ul className="menu-list">
           <li>
             <NavLink to="/" onClick={closeNavbar}>
-              Home
+              Hem
             </NavLink>
           </li>
           <li>
@@ -55,7 +55,7 @@ const { currentUser, logOut } = context;
           {currentUser ? (
     <li>
       <button onClick={handleLogOut} className="logout-btn">
-        Log out
+        Logga ut
       </button>
     </li>
   ) : (

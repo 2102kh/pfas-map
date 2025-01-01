@@ -4,15 +4,26 @@ import { getCityInfo } from "../API/getCityInfo.ts";
 import { AuthContext } from "../contexts/AuthContext.ts";
 import { editCityInfo } from "../API/editCityInfo.ts";
 import "../styles/_edit-pfas.scss";
+const formatTimestamp = (timestamp: any): string => {
+  if (timestamp?.seconds) {
+    const date = new Date(timestamp.seconds * 1000);
+    return date.toISOString().split("T")[0];
+  }
+  return "Ingen information";
+};
 
 const EditPfas = () => {
   const [cityInfo, setCityInfo] = useState<ICity | null>(null);
   const [level, setLevel] = useState<string>("");
   const context = useContext(AuthContext);
   const [isEditing, setIsEditing] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
 
   useEffect(() => {
-    if (cityInfo) setLevel(cityInfo.pfasData);
+    if (cityInfo) {
+      setLevel(cityInfo.pfasData);
+      setLastUpdated(formatTimestamp(cityInfo.lastUpdate || null));
+    }
   }, [cityInfo]);
 
   useEffect(() => {
@@ -38,6 +49,7 @@ const EditPfas = () => {
       return;
     };
     await editCityInfo(cityInfo.uid, level);
+    setLastUpdated(new Date().toISOString().split("T")[0]);
   };
 
   return (
@@ -69,6 +81,9 @@ const EditPfas = () => {
               </button>
             )}
           </div>
+          <p className="edit-pfas__last-updated">
+            Senast uppdaterad: {lastUpdated ? lastUpdated : "Ingen information"}
+          </p>
         </div>
       )}
     </div>
