@@ -112,6 +112,10 @@ header {
       transition: transform 1.5s ease-in-out;
       transform: translateY(-100vh);
       z-index: 1000;
+      &.active {
+        border-bottom: 1.5px solid var(--greenColor);
+        color: var(--textColor);
+      }
 
       &.responsive_nav {
         transform: none;
@@ -121,6 +125,17 @@ header {
         position: absolute;
         top: 2rem;
         right: 2rem;
+      }
+    }
+    nav a {
+      
+      &:hover {
+        color: var(--textHoverColor);
+      }
+  
+      &.active {
+        border-bottom: 1.5px solid var(--greenColor);
+        color: var(--textColor);
       }
     }
   }
